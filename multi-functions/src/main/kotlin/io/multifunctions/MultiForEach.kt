@@ -1,8 +1,6 @@
 package io.multifunctions
 
-import io.multifunctions.models.Hexa
-import io.multifunctions.models.Penta
-import io.multifunctions.models.Quad
+import io.multifunctions.models.*
 
 fun <A, B> Iterable<Pair<A?, B?>>.forEach(action: (A?, B?) -> Unit): Unit =
         this.forEach { elem -> action(elem.first, elem.second) }

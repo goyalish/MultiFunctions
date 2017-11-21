@@ -1,8 +1,6 @@
 package io.multifunctions
 
-import io.multifunctions.models.Hexa
-import io.multifunctions.models.Penta
-import io.multifunctions.models.Quad
+import io.multifunctions.models.*
 
 fun <A, B, R> Pair<A?, B?>.letNotNull(transform: (A, B) -> R): R? =
         when (null) {
