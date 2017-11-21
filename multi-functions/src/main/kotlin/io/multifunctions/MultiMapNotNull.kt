@@ -6,7 +6,8 @@ inline fun <A, B, R : Any> Iterable<Pair<A?, B?>>.mapNotNull(transform: (A, B) -
         this.mapNotNull { elem ->
             when (null) {
                 elem.first, elem.second -> null
-                else -> transform(elem.first as A, elem.second as B)
+                else -> transform(elem.first ?: throw IllegalStateException("first cannot be null"),
+                                  elem.second ?: throw IllegalStateException("second cannot be null"))
             }
         }
 
@@ -14,7 +15,9 @@ inline fun <A, B, C, R : Any> Iterable<Triple<A?, B?, C?>>.mapNotNull(transform:
         this.mapNotNull { elem ->
             when (null) {
                 elem.first, elem.second, elem.third -> null
-                else -> transform(elem.first as A, elem.second as B, elem.third as C)
+                else -> transform(elem.first ?: throw IllegalStateException("first cannot be null"),
+                                  elem.second ?: throw IllegalStateException("second cannot be null"),
+                                  elem.third ?: throw IllegalStateException("third cannot be null"))
             }
         }
 
